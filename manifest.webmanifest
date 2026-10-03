@@ -1,0 +1,14 @@
+{
+  "id": "/",
+  "name": "Lutra | cursos online",
+  "short_name": "Lutra",
+  "description": "Encontre o curso certo para evoluir suas habilidades.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f8fb",
+  "theme_color": "#106EBE",
+  "icons": [
+    { "src": "/static/img/logo.png", "sizes": "1536x1024", "type": "image/png", "purpose": "any" }
+  ]
+}

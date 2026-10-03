@@ -1,0 +1,112 @@
+:root {
+  --paper: #eaf6f8;
+  --blue: #106ebe;
+  --blue-deep: #074776;
+  --mint: #0ffcbe;
+}
+
+.hero {
+  background: #eaf6f8;
+}
+
+.hero-search .button,
+.closing-cta .button {
+  background: var(--mint);
+  color: #06445a;
+}
+
+.hero-search .button:hover,
+.closing-cta .button:hover {
+  background: #00dda9;
+}
+
+.category-icon {
+  background: var(--mint);
+  color: var(--blue-deep);
+}
+
+.category-tile:hover {
+  background: #dcf6f0;
+}
+
+.popular-section {
+  background: var(--blue);
+}
+
+.popular-section h2,
+.popular-section p {
+  color: #fff;
+}
+
+.popular-section .eyebrow {
+  color: var(--mint);
+}
+
+.popular-section .button {
+  background: var(--mint);
+  color: #06445a;
+}
+
+.popular-section .course-card .eyebrow {
+  color: var(--blue);
+}
+
+.popular-section .course-card p {
+  color: var(--muted);
+}
+
+.course-card,
+.card-image,
+.catalog-tools .search,
+.category-tile,
+.buy-box,
+.login-box {
+  border-radius: 12px;
+}
+
+.course-card,
+.card-image {
+  overflow: hidden;
+}
+
+.course-card .badge {
+  border-radius: 0 0 8px 0;
+}
+
+.button,
+.search,
+.catalog-tools select {
+  border-radius: 9px;
+}
+
+.mascot-frame {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.mascot-frame img {
+  object-fit: cover;
+  object-position: center top;
+  transform: scaleX(-1) scale(1.04);
+  mix-blend-mode: screen;
+}
+
+.wordmark img,
+.not-found-art img {
+  object-fit: cover;
+  mix-blend-mode: screen;
+}
+
+.not-found-art {
+  background: #eaf6f8;
+}
+
+@media (max-width: 640px) {
+  .popular-section .card-title,
+  .popular-section .card-meta,
+  .popular-section .card-price {
+    color: var(--ink);
+  }
+}
