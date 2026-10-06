@@ -35,12 +35,12 @@ function legalPage(route){const [title,body]=legal[route];return `${header()}<ma
 function login(){return `<main class="login-page"><a class="wordmark" href="/" data-link><img src="/static/img/mascote.png" alt=""><span>${esc(state.settings.name)}</span></a><form class="login-box" id="login-form"><span class="eyebrow">ÁREA RESTRITA</span><h1>Acesse seu painel</h1><p>Entre com uma conta administradora autorizada.</p><label>E-mail<input type="email" name="email" autocomplete="username" required></label><label>Senha<input type="password" name="password" autocomplete="current-password" required minlength="8"></label><button class="button" type="submit">Entrar <b>→</b></button><p class="form-message" id="login-message"></p></form><a class="back-link" href="/" data-link>← Voltar ao site</a></main>`}
 function authPage(mode='signin'){
   const registering=mode==='signup';
-  return `<main class="auth-page">
+  return `<main class="auth-page${registering?' auth-register':''}">
     <header class="auth-brand"><a class="wordmark" href="/" data-link><img src="/static/img/mascote.png" alt=""><span>${esc(state.settings.name)}</span></a><a class="auth-back" href="/" data-link>← Voltar ao catálogo</a></header>
     <section class="auth-visual" aria-label="Mascote Lutra">
       <div class="auth-visual-copy"><span class="eyebrow">SEU PRÓXIMO CAPÍTULO</span><h1>Conhecimento abre caminhos.</h1><p>Vamos encontrar o seu próximo passo.</p></div>
       <div class="auth-rope" aria-hidden="true"></div><img class="auth-mascot" src="/static/img/mascote.png" alt="A lontra Lutra chegou para ajudar você">
-      <div class="auth-speech" aria-hidden="true"><span>Oi! Vim puxar sua próxima conquista.</span><b>✦</b></div>
+      <div class="auth-speech" aria-hidden="true"><span>${registering?'Vem criar sua conta comigo!':'Oi! Vim puxar sua próxima conquista.'}</span><b>✦</b></div>
     </section>
     <section class="auth-card" aria-labelledby="auth-title">
       <div class="auth-tabs" aria-label="Acesso à conta"><a href="/entrar" data-link class="${registering?'':'active'}" ${registering?'':'aria-current="page"'}>Entrar</a><a href="/cadastro" data-link class="${registering?'active':''}" ${registering?'aria-current="page"':''}>Criar conta</a></div>

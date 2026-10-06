@@ -202,21 +202,23 @@
   object-fit: cover;
   object-position: center top;
   mix-blend-mode: screen;
+  filter: brightness(.62) saturate(1.3) contrast(1.16);
   opacity: 0;
-  transform: translateX(-34%) rotate(-4deg);
-  animation: auth-mascot-arrive 900ms cubic-bezier(.2,.75,.25,1) 120ms forwards;
+  transform: translateX(-112%) rotate(-12deg) scale(.88);
+  transform-origin: 72% 72%;
+  animation: auth-mascot-arrive 2s cubic-bezier(.2,.75,.25,1) 100ms both;
 }
 
 .auth-rope {
   position: absolute;
-  z-index: 0;
+  z-index: 3;
   left: 67%;
-  top: 67%;
-  width: 34%;
-  border-top: 2px dashed #087c9d;
-  transform: rotate(-8deg) scaleX(0);
+  top: 57%;
+  width: calc(34% + 64px);
+  border-top: 3px dashed #087c9d;
+  transform: rotate(-7deg) scaleX(0);
   transform-origin: left center;
-  animation: auth-rope-pull 560ms ease-out 650ms forwards;
+  animation: auth-rope-pull 720ms ease-out 820ms both;
 }
 
 .auth-speech {
@@ -235,7 +237,7 @@
   border-radius: 12px 12px 12px 3px;
   box-shadow: 0 10px 28px #17405614;
   font-size: 12px;
-  animation: auth-speech-pop 500ms ease-out 900ms both;
+  animation: auth-speech-pop 520ms cubic-bezier(.2,.8,.2,1) 1.25s both;
 }
 
 .auth-speech b {
@@ -254,8 +256,9 @@
   border-radius: 12px;
   box-shadow: 0 22px 64px #16445816;
   opacity: 0;
-  transform: translate(56px, 12px) rotate(1.5deg);
-  animation: auth-card-pull 720ms cubic-bezier(.16,.8,.2,1) 440ms forwards;
+  transform: translate(120px, 10px) rotate(8deg) scale(.93);
+  transform-origin: 0 58%;
+  animation: auth-card-pull 1.15s cubic-bezier(.16,.8,.2,1) 780ms both;
 }
 
 .auth-card::before {
@@ -392,24 +395,80 @@
 }
 
 @keyframes auth-mascot-arrive {
-  0% { opacity: 0; transform: translateX(-34%) rotate(-4deg); }
-  72% { opacity: 1; transform: translateX(3%) rotate(1deg); }
-  100% { opacity: 1; transform: translateX(0) rotate(0); }
+  0% { opacity: 0; transform: translateX(-112%) rotate(-12deg) scale(.88); }
+  32% { opacity: 1; transform: translateX(5%) rotate(4deg) scale(1.02); }
+  48% { opacity: 1; transform: translateX(-7%) rotate(-6deg) scale(.99); }
+  65% { opacity: 1; transform: translateX(3%) rotate(3deg) scale(1); }
+  82% { opacity: 1; transform: translateX(-2%) rotate(-1.5deg); }
+  100% { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
 }
 
 @keyframes auth-card-pull {
-  0% { opacity: 0; transform: translate(56px, 12px) rotate(1.5deg); }
-  70% { opacity: 1; transform: translate(-5px, 0) rotate(-.4deg); }
-  100% { opacity: 1; transform: translate(0, 0) rotate(0); }
+  0% { opacity: 0; transform: translate(120px, 10px) rotate(8deg) scale(.93); }
+  42% { opacity: 1; transform: translate(-18px, 0) rotate(-3deg) scale(1.02); }
+  61% { opacity: 1; transform: translate(12px, 0) rotate(2deg) scale(.99); }
+  80% { opacity: 1; transform: translate(-5px, 0) rotate(-.8deg) scale(1); }
+  100% { opacity: 1; transform: translate(0, 0) rotate(0) scale(1); }
 }
 
 @keyframes auth-rope-pull {
-  to { transform: rotate(-8deg) scaleX(1); }
+  0% { transform: rotate(-7deg) scaleX(0); }
+  62% { transform: rotate(-7deg) scaleX(1.04); }
+  100% { transform: rotate(-7deg) scaleX(1); }
 }
 
 @keyframes auth-speech-pop {
   from { opacity: 0; transform: translateY(9px) scale(.96); }
   to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.auth-register .auth-mascot {
+  left: 12%;
+  bottom: -8%;
+  animation-name: auth-register-mascot;
+  animation-duration: 2.35s;
+  animation-delay: 80ms;
+}
+
+.auth-register .auth-rope {
+  top: 54%;
+  animation-name: auth-register-rope;
+  animation-duration: 760ms;
+  animation-delay: 940ms;
+}
+
+.auth-register .auth-card {
+  animation-name: auth-register-card;
+  animation-duration: 1.35s;
+  animation-delay: 980ms;
+}
+
+.auth-register .auth-speech {
+  animation-delay: 1.55s;
+}
+
+@keyframes auth-register-mascot {
+  0% { opacity: 0; transform: translate(-135%, 65%) rotate(-18deg) scale(.82); }
+  31% { opacity: 1; transform: translate(-2%, 0) rotate(5deg) scale(1.03); }
+  46% { opacity: 1; transform: translate(-9%, 0) rotate(-8deg) scale(1); }
+  61% { opacity: 1; transform: translate(8%, 0) rotate(7deg) scale(1.01); }
+  78% { opacity: 1; transform: translate(35%, 0) rotate(-4deg); }
+  88% { opacity: 1; transform: translate(43%, 0) rotate(2deg); }
+  100% { opacity: 1; transform: translate(40%, 0) rotate(0) scale(1); }
+}
+
+@keyframes auth-register-card {
+  0% { opacity: 0; transform: translate(190px, 18px) rotate(11deg) scale(.9); }
+  38% { opacity: 1; transform: translate(-22px, 0) rotate(-4deg) scale(1.02); }
+  56% { opacity: 1; transform: translate(15px, 0) rotate(2.5deg) scale(.99); }
+  76% { opacity: 1; transform: translate(-7px, 0) rotate(-1deg); }
+  100% { opacity: 1; transform: translate(0, 0) rotate(0) scale(1); }
+}
+
+@keyframes auth-register-rope {
+  0% { transform: rotate(-7deg) scaleX(0); }
+  60% { transform: rotate(-7deg) scaleX(1.08); }
+  100% { transform: rotate(-7deg) scaleX(1); }
 }
 
 @media (max-width: 760px) {
@@ -423,17 +482,59 @@
 
   .auth-brand { grid-column: 1; }
   .auth-visual { height: 225px; min-height: 0; align-self: auto; overflow: hidden; }
+  .auth-register .auth-visual { overflow: visible; }
   .auth-visual-copy { top: 22px; left: 2px; width: 54%; }
   .auth-visual-copy .eyebrow { font-size: 9px; }
   .auth-visual-copy h1 { font-size: 25px; margin: 8px 0 5px; }
   .auth-visual-copy p { font-size: 11px; }
-  .auth-mascot { width: 66%; left: auto; right: -5%; bottom: -23%; }
+  .auth-mascot { width: 66%; left: auto; right: -5%; bottom: -23%; transform-origin: 55% 72%; animation-name: auth-mascot-arrive-mobile; }
   .auth-rope { display: none; }
-  .auth-speech { top: auto; right: 3%; bottom: 8px; max-width: 170px; padding: 9px 11px; font-size: 10px; }
-  .auth-card { max-width: 520px; justify-self: center; padding: 22px 20px 19px; }
+  .auth-speech { top: auto; right: 3%; bottom: 8px; max-width: 170px; padding: 9px 11px; font-size: 10px; animation-delay: 1.1s; }
+  .auth-card { max-width: 520px; justify-self: center; padding: 22px 20px 19px; transform: translateY(70px) scale(.96); animation-name: auth-card-pull-mobile; animation-delay: 750ms; }
+  .auth-register .auth-mascot { width: 66%; right: -5%; animation-name: auth-register-mascot-mobile; animation-duration: 2.1s; }
+  .auth-register .auth-rope { display: block; left: 54%; top: 85%; width: 38%; border-top-width: 2px; transform: rotate(58deg) scaleX(0); animation-name: auth-register-rope-mobile; animation-duration: 640ms; animation-delay: 780ms; }
+  .auth-register .auth-card { animation-name: auth-register-card-mobile; animation-delay: 900ms; animation-duration: 1.1s; }
+  .auth-register .auth-speech { animation-delay: 1.3s; }
   .auth-card::before { display: none; }
   .auth-tabs { margin-bottom: 20px; }
   .auth-card h2 { font-size: 24px; }
+}
+
+@keyframes auth-mascot-arrive-mobile {
+  0% { opacity: 0; transform: translateX(72%) rotate(10deg) scale(.86); }
+  38% { opacity: 1; transform: translateX(-4%) rotate(-4deg) scale(1.02); }
+  55% { opacity: 1; transform: translateX(5%) rotate(5deg) scale(1); }
+  73% { opacity: 1; transform: translateX(-2%) rotate(-2deg); }
+  100% { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
+}
+
+@keyframes auth-card-pull-mobile {
+  0% { opacity: 0; transform: translateY(70px) scale(.96); }
+  62% { opacity: 1; transform: translateY(-9px) scale(1.01); }
+  82% { opacity: 1; transform: translateY(4px) scale(.995); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes auth-register-mascot-mobile {
+  0% { opacity: 0; transform: translate(95%, 45%) rotate(14deg) scale(.82); }
+  35% { opacity: 1; transform: translate(-5%, 0) rotate(-5deg) scale(1.03); }
+  52% { opacity: 1; transform: translate(6%, 0) rotate(7deg); }
+  70% { opacity: 1; transform: translate(-28%, 0) rotate(-4deg); }
+  86% { opacity: 1; transform: translate(-19%, 0) rotate(2deg); }
+  100% { opacity: 1; transform: translate(-25%, 0) rotate(0) scale(1); }
+}
+
+@keyframes auth-register-card-mobile {
+  0% { opacity: 0; transform: translateY(80px) scale(.94); }
+  58% { opacity: 1; transform: translateY(-11px) scale(1.01); }
+  79% { opacity: 1; transform: translateY(5px) scale(.995); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes auth-register-rope-mobile {
+  0% { transform: rotate(58deg) scaleX(0); }
+  65% { transform: rotate(58deg) scaleX(1.08); }
+  100% { transform: rotate(58deg) scaleX(1); }
 }
 
 @media (max-width: 390px) {
