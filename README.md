@@ -1,12 +1,12 @@
 # Lutra
 
-Catálogo de cursos e painel de gerenciamento em português, com frontend estático, Supabase Auth/Postgres e deploy no Netlify.
+Catálogo de cursos e painel de gerenciamento em português, com frontend estático, Supabase Auth/Postgres e deploy estático.
 
 ## Stack
 
 - HTML, CSS e JavaScript sem framework no cliente.
 - Supabase Auth e Postgres com Row Level Security.
-- Netlify para build/deploy estático e headers de segurança.
+- Render Static Sites ou Netlify para build/deploy estático.
 - PWA com manifesto e cache offline da estrutura pública.
 
 ## Rodar localmente
@@ -21,12 +21,12 @@ Acesse `http://localhost:4173`. Sem Supabase configurado, o catálogo mostra cur
 
 ## Supabase
 
-1. Crie um projeto Supabase.
-2. No SQL Editor, execute o arquivo `supabase/schema.sql`.
-3. Crie um usuário em Authentication > Users (não habilite cadastro público).
-4. Copie o UUID desse usuário e execute o comando comentado no final de `schema.sql` para conceder a função administrativa.
-5. Configure as variáveis `SUPABASE_URL` e `SUPABASE_ANON_KEY` no Netlify. Use apenas a chave publicável/anon no frontend. Nunca use `service_role` ou secret key no navegador.
-6. Em Authentication > URL Configuration, cadastre o domínio local e o domínio final do Netlify como URLs permitidas.
+1. Projeto Lutra: `dirufihqwzgyqcythsdb` (região `sa-east-1`). O esquema inicial já está aplicado.
+2. O cadastro público em `/cadastro` cria usuários comuns no Supabase Auth. Nome e telefone são salvos como metadados do usuário; senhas são gerenciadas pelo Auth e nunca gravadas em tabelas da aplicação.
+4. Para criar um administrador, copie o UUID do usuário em Authentication > Users e execute o comando comentado no final de `schema.sql`. Cadastros públicos nunca recebem acesso administrativo.
+5. Para desenvolvimento local, copie `.env.example` para `.env`; `npm run dev` carrega essas variáveis. `.env` está ignorado pelo Git.
+6. Configure `SUPABASE_URL`, `SUPABASE_ANON_KEY` e `SITE_URL` como variáveis de build no serviço de publicação. Use apenas a chave publicável/anon no frontend. Nunca use `service_role` ou secret key no navegador.
+7. Em Authentication > URL Configuration, cadastre o domínio local e o domínio final publicado como URLs permitidas para redirecionamento de confirmação de e-mail.
 
 RLS restringe gravação e leitura administrativa aos UUIDs cadastrados em `admin_users`. A coluna `affiliate_url` não é concedida à função `anon`; o RPC `track_course_click` registra os dados mínimos e retorna o URL somente para o redirecionamento solicitado.
 
@@ -36,7 +36,7 @@ RLS restringe gravação e leitura administrativa aos UUIDs cadastrados em `admi
 npm run build
 ```
 
-O resultado fica em `dist/`. O `netlify.toml` configura o build automaticamente. Conecte o repositório GitHub ao Netlify e defina `SUPABASE_URL`, `SUPABASE_ANON_KEY` e `SITE_URL` nas variáveis de ambiente do site. Deploys subsequentes acompanham pushes no repositório.
+O resultado fica em `dist/`. Para Render Static Sites, use `npm run build` como Build Command e `dist` como Publish Directory. Defina `SUPABASE_URL`, `SUPABASE_ANON_KEY` e `SITE_URL` nas variáveis de ambiente/build do serviço. Cadastre o domínio final também nas URLs permitidas do Supabase Auth.
 
 Para publicar pelo GitHub, conecte uma cópia deste diretório ao repositório `https://github.com/matheusdias16h-bot/luntra`. O ambiente Codex atual não possui credenciais GitHub disponíveis.
 

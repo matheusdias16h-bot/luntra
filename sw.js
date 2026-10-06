@@ -1,4 +1,4 @@
-const CACHE = 'lutra-v2';
+const CACHE = 'lutra-v4';
 const SHELL = ['/', '/index.html', '/app.js', '/styles.css', '/brand-overrides.css', '/manifest.webmanifest', '/static/img/logo.png', '/static/img/mascote.png'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))));
